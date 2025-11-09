@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Monate BnB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #d4af37;
+            --accent: #8b7355;
+            --neutral: #f8f4e9;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #fff;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary);
+            color: var(--text-light);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Page Header */
+        .page-header {
+            height: 40vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./assets/hero2.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            padding-top: 80px;
+            margin-bottom: 3rem;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Section Styling */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        /* Services Navigation */
+        .services-nav {
+            background-color: var(--neutral);
+            padding: 1.5rem 0;
+            margin-bottom: 3rem;
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+        }
+        
+        .services-nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .service-nav-item {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            border-radius: 30px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .service-nav-item:hover, .service-nav-item.active {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        /* Accommodation Services */
+        .accommodation-services {
+            padding: 5rem 0;
+        }
+        
+        .service-category {
+            margin-bottom: 5rem;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+        
+        .service-info {
+            padding: 1.5rem;
+        }
+        
+        .service-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .service-features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .service-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        /* Construction Services */
+        .construction-services {
+            background-color: var(--neutral);
+            padding: 5rem 0;
+        }
+        
+        .construction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .construction-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .construction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .construction-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .construction-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Other Services */
+        .other-services {
+            padding: 5rem 0;
+        }
+        
+        .other-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .other-service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .other-service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .other-service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Why Choose Us */
+        .why-choose-us {
+            background-color: var(--neutral);
+            padding: 5rem 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .benefit-card {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .benefit-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.9)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 5rem 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s;
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            margin-right: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .services-nav-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .service-nav-item {
+                width: 80%;
+                text-align: center;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-section {
+                margin-right: 0;
+                margin-bottom: 2rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">Monate BnB</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p>Comprehensive hospitality and construction solutions tailored to your needs</p>
+        </div>
+    </section>
+
+    <!-- Services Navigation -->
+    <section class="services-nav">
+        <div class="container">
+            <div class="services-nav-container">
+                <a href="#accommodation" class="service-nav-item active">Accommodation</a>
+                <a href="#construction" class="service-nav-item">Construction</a>
+                <a href="#civil-engineering" class="service-nav-item">Civil Engineering</a>
+                <a href="#water-services" class="service-nav-item">Water Services</a>
+                <a href="#other-services" class="service-nav-item">Other Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accommodation Services -->
+    <section class="accommodation-services" id="accommodation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Accommodation Services</h2>
+                <p>Experience comfort and hospitality at our well-appointed BnB</p>
+            </div>
+            
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Standard Room">
+                    </div>
+                    <div class="service-info">
+                        <h3>Luxury Rooms</h3>
+                        <p>Comfortable and elegantly designed rooms with all modern amenities for a perfect stay.</p>
+                        <ul class="service-features">
+                            <li>Complimentary breakfast</li>
+                            <li>En-suite bathrooms</li>
+                            <li>High-speed WiFi</li>
+                            <li>Daily housekeeping</li>
+                            <li>24/7 security</li>
+                        </ul>
+                        <a href="rooms.html" class="btn">View Rooms</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dining Area">
+                    </div>
+                    <div class="service-info">
+                        <h3>Dining & Catering</h3>
+                        <p>Enjoy delicious meals prepared with local ingredients and authentic flavors.</p>
+                        <ul class="service-features">
+                            <li>Complimentary breakfast</li>
+                            <li>Room service available</li>
+                            <li>Local cuisine specialties</li>
+                            <li>Special dietary accommodations</li>
+                            <li>Event catering services</li>
+                        </ul>
+                        <a href="contact.html" class="btn">Inquire Now</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Event Space">
+                    </div>
+                    <div class="service-info">
+                        <h3>Event Hosting</h3>
+                        <p>Perfect venues for intimate gatherings, business meetings, and special celebrations.</p>
+                        <ul class="service-features">
+                            <li>Meeting facilities</li>
+                            <li>Small wedding venues</li>
+                            <li>Corporate retreats</li>
+                            <li>Family gatherings</li>
+                            <li>Full event planning</li>
+                        </ul>
+                        <a href="contact.html" class="btn">Plan Your Event</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Construction Services -->
+    <section class="construction-services" id="construction">
+        <div class="container">
+            <div class="section-title">
+                <h2>Construction Services</h2>
+                <p>Professional building and renovation services from our experienced team</p>
+            </div>
+            
+            <div class="construction-grid">
+                <div class="construction-card">
+                    <div class="construction-icon">🏗️</div>
+                    <h3>General Construction</h3>
+                    <p>Complete building solutions for residential and commercial projects.</p>
+                    <ul class="service-features">
+                        <li>New building construction</li>
+                        <li>Renovations and extensions</li>
+                        <li>Reinforced concrete construction</li>
+                        <li>Construction project management</li>
+                        <li>Building maintenance services</li>
+                    </ul>
+                </div>
+                
+                <div class="construction-card">
+                    <div class="construction-icon">🛣️</div>
+                    <h3>Road Works & Maintenance</h3>
+                    <p>Comprehensive road construction and maintenance services.</p>
+                    <ul class="service-features">
+                        <li>Road rehabilitation projects</li>
+                        <li>Pothole maintenance</li>
+                        <li>Road sign replacement</li>
+                        <li>Culvert construction</li>
+                        <li>Storm water reservoirs</li>
+                    </ul>
+                </div>
+                
+                <div class="construction-card">
+                    <div class="construction-icon">🚧</div>
+                    <h3>Civil Engineering</h3>
+                    <p>Expert engineering solutions for infrastructure development.</p>
+                    <ul class="service-features">
+                        <li>Road re-gravelling and dust suppression</li>
+                        <li>Concrete pre-casting and steel work</li>
+                        <li>Plant hire services</li>
+                        <li>Scaffolding solutions</li>
+                        <li>Water & sanitation construction</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Civil Engineering Services -->
+    <section class="other-services" id="civil-engineering">
+        <div class="container">
+            <div class="section-title">
+                <h2>Civil Engineering & Specialized Services</h2>
+                <p>Advanced solutions for infrastructure and environmental challenges</p>
+            </div>
+            
+            <div class="other-services-grid">
+                <div class="other-service-card">
+                    <div class="other-service-icon">🌿</div>
+                    <h3>Invasive Species Clearing</h3>
+                    <p>Professional removal of alien invasive species to protect biodiversity.</p>
+                    <ul class="service-features">
+                        <li>Alien invasive species removal</li>
+                        <li>Grass cutting and maintenance</li>
+                        <li>Tree felling services</li>
+                        <li>Biodiversity protection</li>
+                    </ul>
+                </div>
+                
+                <div class="other-service-card">
+                    <div class="other-service-icon">💨</div>
+                    <h3>Dust Suppression</h3>
+                    <p>Effective dust control solutions for various applications.</p>
+                    <ul class="service-features">
+                        <li>Tipping areas control</li>
+                        <li>Conveyor transfer points</li>
+                        <li>Stockpile management</li>
+                        <li>Loading terminals</li>
+                        <li>Transport route suppression</li>
+                    </ul>
+                </div>
+                
+                <div class="other-service-card">
+                    <div class="other-service-icon">💧</div>
+                    <h3>Water & Sanitation</h3>
+                    <p>Comprehensive water and sanitation construction services.</p>
+                    <ul class="service-features">
+                        <li>Water infrastructure</li>
+                        <li>Sanitation systems</li>
+                        <li>Drainage solutions</li>
+                        <li>Reservoir construction</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Water Services -->
+    <section class="construction-services" id="water-services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Purified Water Services</h2>
+                <p>Quality hydration solutions for homes and businesses</p>
+            </div>
+            
+            <div class="construction-grid">
+                <div class="construction-card">
+                    <div class="construction-icon">🚰</div>
+                    <h3>Water Refill Station</h3>
+                    <p>Convenient water refilling services for your hydration needs.</p>
+                </div>
+                
+                <div class="construction-card">
+                    <div class="construction-icon">🧊</div>
+                    <h3>Bottled Water</h3>
+                    <p>Premium quality bottled water for events, offices, and homes.</p>
+                </div>
+                
+                <div class="construction-card">
+                    <div class="construction-icon">🍹</div>
+                    <h3>Beverage Solutions</h3>
+                    <p>Complete beverage services including ice cubes, juices, and carbonated drinks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Services -->
+    <section class="other-services" id="other-services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Supply Services</h2>
+                <p>Quality equipment and materials for various needs</p>
+            </div>
+            
+            <div class="other-services-grid">
+                <div class="other-service-card">
+                    <div class="other-service-icon">🛡️</div>
+                    <h3>Safety Equipment</h3>
+                    <p>Personal protective clothing and equipment for workplace safety.</p>
+                </div>
+                
+                <div class="other-service-card">
+                    <div class="other-service-icon">📦</div>
+                    <h3>Office Supplies</h3>
+                    <p>Complete stationery and office supplies for businesses.</p>
+                </div>
+                
+                <div class="other-service-card">
+                    <div class="other-service-icon">🍎</div>
+                    <h3>Nutrition Supplies</h3>
+                    <p>Schools nutrition food supplies to support education.</p>
+                </div>
+                
+                <div class="other-service-card">
+                    <div class="other-service-icon">🧽</div>
+                    <h3>Cleaning Supplies</h3>
+                    <p>Quality cleaning detergents and supplies for various applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Monate BnB Services</h2>
+                <p>Our commitment to excellence sets us apart</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⭐</div>
+                    <h3>Quality Assurance</h3>
+                    <p>We maintain the highest standards in all our services, from hospitality to construction.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">⏱️</div>
+                    <h3>Timely Delivery</h3>
+                    <p>We complete all projects within agreed timelines without compromising quality.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">💼</div>
+                    <h3>Expert Team</h3>
+                    <p>Our experienced professionals bring wide expertise across multiple industries.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌍</div>
+                    <h3>Community Focus</h3>
+                    <p>We're committed to supporting local communities and sustainable development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Experience Our Services?</h2>
+            <p>Whether you need comfortable accommodation or professional construction services, we're here to help with quality solutions tailored to your needs.</p>
+            <a href="contact.html" class="btn">Get In Touch</a>
+            <a href="rooms.html" class="btn btn-outline">Book Accommodation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Monate BnB</h3>
+                    <p>Your comfort is our priority. Experience authentic Kuruman hospitality with us.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">ig</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="rooms.html">Rooms</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Stand 1303, Thuli Malonsela, Kuruman, 8460</p>
+                    <p>082 229 4419 | 083 620 2300</p>
+                    <p>salesamer123@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Monate BnB. All Rights Reserved. | Part of Move Us n Shake Us (Pty) Ltd</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for service navigation
+        document.querySelectorAll('.service-nav-item').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all items
+                document.querySelectorAll('.service-nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Update active nav item on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navItems = document.querySelectorAll('.service-nav-item');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${currentSection}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
